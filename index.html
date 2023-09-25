@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Einbindung von Bootstrap -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <style>
+
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+<h1>Ingo Ruff Ansagen Generator</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card rounded p-3">
+          <h3>Allgemein</h3>
+          <label for="durchsageDropdown">Gong:</label>
+          <select id="durchsageDropdown" class="form-control">
+            <option value="new">Neu</option>
+          </select>
+<br>
+          <label for="nextstationDropdown">Nächste Station:</label>
+          <select id="nextstationDropdown" class="form-control">
+            <optgroup label="Dessau (MDV Zone 270)">
+              <option value="dessau">Dessau HBF</option>
+              <option value="dessau-mosigkau">Dessau-Mosigkau</option>
+              <option value="rodleben">Rodleben</option>
+              <option value="roßlau">Roßlau</option>
+            </optgroup>
+		<optgroup label="Leipzig">
+      <option value="bayerischer-bahnhof">Leipzig Bayerischer Bahnhof</option>
+      <option value="connewitz">Leipzig Connewitz (bugged)</option>
+      <option value="leipzig-hauptbahnhof">Leipzig Hauptbahnhof</option>
+      <option value="markt">Leipzig Markt (bugged)</option>
+      <option value="mdr">Leipzig MDR</option>
+      <option value="wilhelm-leuschner-platz">Leipzig Wilhelm-Leuschner-Platz</option>
+</optgroup>
+    <option value="leipzig-halle-airport">Leipzig-Halle Flughafen</option>
+    <option value="halle-saale-hbf">Halle (Saale) Hauptbahnhof</option>
+            <option value="hauptbahnhof">Hauptbahnhof (Allgemein)</option>
+            <option value="zoo">Zoo (Halle)</option>
+          </select>
+<br>
+          <label for="exitDropdown">Ausstieg:</label>
+          <select id="exitDropdown" class="form-control">
+            <option value="select"Auswählen</option>
+            <option value="right">Rechts</option>
+            <option value="left">Links</option>
+          </select>
+<br><h3>Sonderansagen (nur eine)</h3>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="LastStop">
+  <label class="form-check-label" for="LastStop">Zugfahrt endet dort
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="Bedarfshalt">
+  <label class="form-check-label" for="Bedarfshalt">Bedarfshalt
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="Höhen">
+  <label class="form-check-label" for="Höhen">Höhenunterschied zwischen Zug und Bahnsteigkante
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="VVS">
+  <label class="form-check-label" for="VVS">Letzter Halt Verkehrsverbund Mittelsachsen
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" value="" id="abstellung">
+  <label class="form-check-label" for="abstellung">Fährt in Abstellung
+  </label><br>
+</div>
+
+</div>      </div>
+      <div class="col-md-6">
+        <div class="card rounded p-3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" id="weiter">
+            <label class="form-check-label" for="weiter">Fährt weiter als...
+            </label>
+          </div>
+                    <label for="TrainType">Zugtyp:</label>
+                    <select id="TrainTypeDropdown" class="form-control">
+              <optgroup label="S-Bahn">
+                        <option value="s1">S1</option>
+                        <option value="s2">S2</option>
+                        <option value="s3">S3</option>
+                        <option value="s4">S4</option>
+                        <option value="s5">S5</option>
+                        <option value="s5x">S5X</option>
+                        <option value="s6">S6</option>
+                        <option value="s7">S7</option>
+                        <option value="s8">S8</option>
+                        <option value="s9">S9</option>
+                        <option value="s10">S10</option>
+              </optgroup>
+              <optgroup label="Regionalbahn (RB)">
+                        <option value="rb20">RB 20</option>
+              </optgroup>
+              <optgroup label="Regionalexpress (RE)">
+                        <option value="re13">RE 13</option>
+              </optgroup>
+                    </select>
+                    <label for="NachDropdown">Nach:</label>
+                    <select id="NachDropdown" class="form-control">
+                      <optgroup label="Dessau (MDV Zone 270)">
+                        <option value="dessau">Dessau HBF</option>
+                        <option value="dessau-mosigkau">Dessau-Mosigkau</option>
+                        <option value="rodleben">Rodleben</option>
+                        <option value="roßlau">Roßlau</option>
+                      </optgroup>
+              <optgroup label="Leipzig">
+                <option value="bayerischer-bahnhof">Leipzig Bayerischer Bahnhof</option>
+                <option value="connewitz">Leipzig Connewitz (bugged)</option>
+                <option value="leipzig-hauptbahnhof">Leipzig Hauptbahnhof</option>
+                <option value="markt">Leipzig Markt (bugged)</option>
+                <option value="mdr">Leipzig MDR</option>
+                <option value="wilhelm-leuschner-platz">Leipzig Wilhelm-Leuschner-Platz</option>
+      </optgroup>
+              <option value="leipzig-halle-airport">Leipzig-Halle Flughafen</option>
+                      <option value="halle-saale-hbf">Halle (Saale) Hauptbahnhof</option>
+                      <option value="hauptbahnhof">Hauptbahnhof (Allgemein)</option>
+                      <option value="zoo">Zoo (Halle)</option>
+                    </select>
+                    <div class="row">
+                      <div class="col-md-6">
+                    <label for="Via1Dropdown">Über (1):</label>
+                    <select id="Via1Dropdown" class="form-control">
+                      <optgroup label="Dessau (MDV Zone 270)">
+                        <option value="dessau">Dessau HBF</option>
+                        <option value="dessau-mosigkau">Dessau-Mosigkau</option>
+                        <option value="rodleben">Rodleben</option>
+                        <option value="roßlau">Roßlau</option>
+                      </optgroup>
+              <optgroup label="Leipzig">
+                <option value="bayerischer-bahnhof">Leipzig Bayerischer Bahnhof</option>
+                <option value="connewitz">Leipzig Connewitz (bugged)</option>
+                <option value="leipzig-hauptbahnhof">Leipzig Hauptbahnhof</option>
+                <option value="markt">Leipzig Markt (bugged)</option>
+                <option value="mdr">Leipzig MDR</option>
+                <option value="wilhelm-leuschner-platz">Leipzig Wilhelm-Leuschner-Platz</option>
+      </optgroup>
+              <option value="leipzig-halle-airport">Leipzig-Halle Flughafen</option>
+                      <option value="halle-saale-hbf">Halle (Saale) Hauptbahnhof</option>
+                      <option value="hauptbahnhof">Hauptbahnhof (Allgemein)</option>
+                      <option value="zoo">Zoo (Halle)</option>
+                    </select>
+                    </div>
+                    <div class="col-md-6">
+                    <label for="Via2Dropdown">Über (2):</label>
+                    <select id="Via2Dropdown" class="form-control">
+                      <optgroup label="Dessau (MDV Zone 270)">
+                        <option value="dessau">Dessau HBF</option>
+                        <option value="dessau-mosigkau">Dessau-Mosigkau</option>
+                        <option value="rodleben">Rodleben</option>
+                        <option value="roßlau">Roßlau</option>
+                      </optgroup>
+              <optgroup label="Leipzig">
+                        <option value="bayerischer-bahnhof">Leipzig Bayerischer Bahnhof</option>
+                        <option value="connewitz">Leipzig Connewitz (bugged)</option>
+                        <option value="leipzig-hauptbahnhof">Leipzig Hauptbahnhof</option>
+                        <option value="markt">Leipzig Markt (bugged)</option>
+                        <option value="mdr">Leipzig MDR</option>
+                        <option value="wilhelm-leuschner-platz">Leipzig Wilhelm-Leuschner-Platz</option>
+              </optgroup>
+              <option value="leipzig-halle-airport">Leipzig-Halle Flughafen</option>
+              <option value="halle-saale-hbf">Halle (Saale) Hauptbahnhof</option>
+              <option value="hauptbahnhof">Hauptbahnhof (Allgemein)</option>
+                  <option value="zoo">Zoo (Halle)</option>
+                    </select>
+                    </div>
+                    </div><br>
+                    <div class="col-md-6">
+                    <button id="playAudio" class="btn btn-primary mt-2 rounded-button" style="display:visible;">Ansage abspielen</button></div>
+                  </div>
+                  <br>
+                  <div class="col-md-13">
+                    <div class="card rounded p-3">
+                      <label>Alle Leipziger Stationen außer Leipzig Hauptbahnhof werden ohne das "Leipzig" gesprochen! Ich arbeite auch an den Versionen wo dies vorhanden ist.</label>
+                    </div>
+                  </div>
+                  <br>
+                </div>
+            </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript-Code zum Anzeigen des Buttons und Abspielen der Audiodatei
+const durchsageDropdown = document.getElementById('durchsageDropdown');
+const nextstationDropdown = document.getElementById('nextstationDropdown');
+const playAudioButton = document.getElementById('playAudio');
+const VVS = document.getElementById("VVS");
+const abstellung = document.getElementById("abstellung");
+const Bedarfshalt = document.getElementById("Bedarfshalt");
+const Höhen = document.getElementById("Höhen");
+const LastStop = document.getElementById("LastStop");
+const weiter = document.getElementById("weiter");
+const TrainTypeDropdown = document.getElementById("TrainTypeDropdown");
+const NachDropdown = document.getElementById("NachDropdown");
+const Via1Dropdown = document.getElementById("Via1Dropdown");
+const Via2Dropdown = document.getElementById("Via2Dropdown");
+
+playAudioButton.addEventListener('click', function() {
+  if (durchsageDropdown.value === 'new') {
+    const newGongAudio = new Audio('newGong.mp3');
+    const exitSpeechAudio = new Audio('exitSpeech.mp3');
+    
+    newGongAudio.play();
+
+    newGongAudio.addEventListener('ended', function() {
+        const selectedValue = nextstationDropdown.value;
+        const audioFilePath = "Stations/" + selectedValue + ".mp3";
+        const stationAudio = new Audio(audioFilePath);
+        
+        stationAudio.play();
+
+        stationAudio.addEventListener('ended', function() {
+        const selectedValue = exitDropdown.value;
+        const exitAudio = new Audio(selectedValue + ".mp3");
+        exitAudio.play();
+        exitAudio.addEventListener('ended', function() {
+
+	if (LastStop.checked) {
+	const endStationAudio = new Audio('endStation.mp3');
+
+  endStationAudio.play();
+  };
+	if (VVS.checked) {
+	const VMSAudio = new Audio('letzter-halt-vms.mp3');
+
+	VMSAudio.play();
+  };
+	if (abstellung.checked) {
+	const AbstellungAudio = new Audio('abstellung.mp3');
+
+	AbstellungAudio.play();
+  };
+	if (Bedarfshalt.checked) {
+	const BedarfshaltAudio = new Audio('bedarfshalt.mp3');
+
+	BedarfshaltAudio.play();
+  };
+
+  if (Höhen.checked) {
+	const HöhenunterschiedAudio = new Audio('höhenunterschied.mp3');
+
+	HöhenunterschiedAudio.play();
+  };
+  if (weiter.checked) {
+	const weiteralsAudio = new Audio('continue-as.mp3');
+
+        weiteralsAudio.play();
+	weiteralsAudio.addEventListener('ended', function() {
+        const selectedValue = "Zugtyp/" + TrainTypeDropdown.value;
+        const TypeAudio = new Audio(selectedValue + ".mp3");
+        TypeAudio.play();
+        TypeAudio.addEventListener('ended', function() {
+	const toAudio = new Audio('to.mp3');
+
+        toAudio.play();
+        toAudio.addEventListener('ended', function() {
+          const selectedValue = "Stations/" + NachDropdown.value;
+	const toStationAudio = new Audio(selectedValue + ".mp3");
+
+        toStationAudio.play();
+        toStationAudio.addEventListener('ended', function() {
+	const viaAudio = new Audio("via.mp3");
+
+        viaAudio.play();
+
+        viaAudio.addEventListener('ended', function() {
+          const selectedValue = "Stations/" + Via1Dropdown.value;
+	const via1Audio = new Audio(selectedValue + ".mp3");
+
+        via1Audio.play();
+
+        via1Audio.addEventListener('ended', function() {
+          const selectedValue = "Stations/" + Via2Dropdown.value;
+	const via2Audio = new Audio(selectedValue + ".mp3");
+
+        via2Audio.play();
+        });
+})})})})})}})})})}});
+  </script>
+</body>
+</html>
